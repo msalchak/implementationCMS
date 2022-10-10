@@ -1,11 +1,10 @@
-package com.implementationcms.domain;
+package com.implementationcms.domain.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
@@ -14,28 +13,27 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @Table
-public class Post {
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @Column
-    private String title;
+    private String nickName;
 
     @Lob
     @Column
     @NotEmpty
-    private String content;
+    public String content;
 
     @Column
-    private Boolean postStatus;
+    private Boolean commentStatus;
 
     @Column
-    private LocalDateTime createdTime;
+    private LocalDateTime createdCommentTime;
 
     @Column
-    private LocalDateTime updatedTime;
+    private LocalDateTime updatedCommentTime;
 
 
 }

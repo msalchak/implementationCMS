@@ -1,28 +1,28 @@
-package com.implementationcms.domain;
+package com.implementationcms.domain.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
 @Table
-public class User {
+public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-    private String userName;
+    private static Boolean statusTransaction;
 
     @Column
-    private String password;
+    private static Integer valueTranstaction;
 
     @Column
-    private String email;
-
+    private static LocalDateTime transactionTime;
 }
