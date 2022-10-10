@@ -1,0 +1,37 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: postgres_testdev
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: testdevdb
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+  
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: marksirius96@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: Greedisgood96
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+
+    ports:
+      - "5050:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+    postgres:
+    pgadmin:
