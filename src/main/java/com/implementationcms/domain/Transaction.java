@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 public class Transaction {
     @Id
@@ -11,8 +12,11 @@ public class Transaction {
     private Long id;
 
     @Column
-    private String userName;
+    private Boolean statusTransaction;
 
     @Column
     private Integer valueTranstaction;
+
+    @Column
+    private LocalDateTime transactionTime;
 }
