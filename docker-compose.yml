@@ -18,8 +18,8 @@ services:
     container_name: pgadmin_container
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: marksirius96@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: Greedisgood96
+      PGADMIN_DEFAULT_EMAIL: *@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: *
       PGADMIN_CONFIG_SERVER_MODE: 'False'
 
     ports:
