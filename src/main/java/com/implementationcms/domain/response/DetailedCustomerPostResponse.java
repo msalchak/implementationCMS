@@ -22,7 +22,7 @@ public class DetailedCustomerPostResponse {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updatedTime;
 
-    public static PropertyMap<Post, DetailedCustomerPostResponse> DetailedCustomerPostDtoMap = new PropertyMap<Content, DetailedCustomerContentResponse>() {
+    public static PropertyMap<Post, DetailedCustomerPostResponse> DetailedCustomerPostDtoMap = new PropertyMap<Post, DetailedCustomerPostResponse>() {
 
         @Override
         protected void configure() {
