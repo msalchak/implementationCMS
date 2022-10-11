@@ -1,7 +1,7 @@
 # Spring Boot configuration
-spring:
-  profiles:
-    active: development
+#spring:
+#  profiles:
+#    active: development
 # Security configuration
 #  security:
 #    user:
