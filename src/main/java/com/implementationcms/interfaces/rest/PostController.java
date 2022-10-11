@@ -1,5 +1,12 @@
 package com.implementationcms.interfaces.rest;
 
+import com.implementationcms.domain.command.CreatePostCommand;
+import com.implementationcms.domain.command.EditPostCommand;
+import com.implementationcms.domain.model.Post;
+import com.implementationcms.domain.response.DetailedAdminPostResponse;
+import com.implementationcms.domain.response.DetailedCustomerPostResponse;
+import com.implementationcms.domain.response.SimplePostResponse;
+import com.implementationcms.domain.service.PostService;
 import com.implementationcms.utils.ModelMapperUtil;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -22,38 +29,38 @@ public class PostController {
     private final ModelMapper modelMapper = ModelMapperUtil.getModelMapper();
 
     @PostMapping
-    public SimpleContentResponse createContent(@RequestBody CreateContentCommand createContentCommand) {
-        Content content = contentService.create(createContentCommand);
-        return modelMapper.map(content, SimpleContentResponse.class);
+    public SimplePostResponse createContent(@RequestBody CreatePostCommand createPostCommand) {
+        Post post = postService.create(createPostCommand);
+        return modelMapper.map(post, SimplePostResponse.class);
     }
 
     @GetMapping
-    public Page<SimpleContentResponse> getAllContents(@PageableDefault Pageable pageable) {
-        Page<Content> contents = contentService.getAll(pageable);
-        return contents.map(content -> modelMapper.map(content, SimpleContentResponse.class));
+    public Page<SimplePostResponse> getAllPosts(@PageableDefault Pageable pageable) {
+        Page<Post> posts = postService.getAll(pageable);
+        return posts.map(post -> modelMapper.map(post, SimplePostResponse.class));
     }
 
     @GetMapping("/{id}")
-    public DetailedAdminContentResponse getContent(@PathVariable Long id) {
-        Content content = contentService.get(id);
-        return modelMapper.map(content, DetailedAdminContentResponse.class);
+    public DetailedAdminPostResponse getPost(@PathVariable Long id) {
+        Post post = postService.get(id);
+        return modelMapper.map(post, DetailedAdminPostResponse.class);
     }
 
     @GetMapping("/{id}/customer")
-    public DetailedCustomerContentResponse viewContent(@PathVariable Long id) {
-        Content content = contentService.view(id);
-        return modelMapper.map(content, DetailedCustomerContentResponse.class);
+    public DetailedCustomerPostResponse viewPost(@PathVariable Long id) {
+        Post post = postService.view(id);
+        return modelMapper.map(post, DetailedCustomerPostResponse.class);
     }
 
     @PostMapping("/{id}/publish")
-    public SimpleContentResponse publishContent(@PathVariable Long id) {
-        Content content = contentService.publish(id);
-        return modelMapper.map(content, SimpleContentResponse.class);
+    public SimplePostResponse publishPost(@PathVariable Long id) {
+        Post post = postService.publish(id);
+        return modelMapper.map(post, SimplePostResponse.class);
     }
 
     @PostMapping("/{id}/edit")
-    public SimpleContentResponse editContent(@PathVariable Long id, @RequestBody EditContentCommand editContentCommand) {
-        Content content = contentService.edit(id, editContentCommand);
-        return modelMapper.map(content, SimpleContentResponse.class);
+    public SimplePostResponse editPost(@PathVariable Long id, @RequestBody EditPostCommand editPostCommand) {
+        Post post = postService.edit(id, editPostCommand);
+        return modelMapper.map(post, SimplePostResponse.class);
     }
 }
